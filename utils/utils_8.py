@@ -14,13 +14,15 @@ silu = ACT2FN["silu"]
 
 def get_tokenizer():
     tokenizer = AutoTokenizer.from_pretrained(
-        "microsoft/Phi-3-mini-128k-instruct"
+        "microsoft/Phi-3-mini-128k-instruct",
+        revision="bb5bf1e4001277a606e11debca0ef80323e5f824"
     )
     return tokenizer
 
 def get_model():
     model = AutoModelForCausalLM.from_pretrained(
             "microsoft/Phi-3-mini-128k-instruct",
+            revision="bb5bf1e4001277a606e11debca0ef80323e5f824",
             device_map="cuda",
             torch_dtype="auto",
             trust_remote_code=True,
@@ -211,7 +213,7 @@ def get_attention_mask(config, hidden_states):
         ).squeeze(1)
 
 def get_config():
-    config = AutoConfig.from_pretrained("microsoft/Phi-3-mini-128k-instruct")
+    config = AutoConfig.from_pretrained("microsoft/Phi-3-mini-128k-instruct", revision="bb5bf1e4001277a606e11debca0ef80323e5f824")
     return config
 
 # prepare position embedding
