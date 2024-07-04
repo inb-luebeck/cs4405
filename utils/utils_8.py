@@ -9,6 +9,7 @@ import torch
 from torch import nn
 import math
 from collections import OrderedDict
+from functools import cache
 
 silu = ACT2FN["silu"]
 
@@ -29,6 +30,7 @@ def get_model():
         )
     return model
 
+@cache
 def get_model_weights():
     def get_model_state_dict():
         model = get_model()
