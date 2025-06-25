@@ -42,7 +42,8 @@ class Animation:
         for index in range(self.k):
             mask = (indexes == index)
             self.clusters[index].set_data(self.samples[mask, 0], self.samples[mask, 1])
-            self.centroids[index].set_data(codebook_vectors[index, 0], codebook_vectors[index, 1])
+            
+            self.centroids[index].set_data(np.array([codebook_vectors[index, 0]]), np.array([codebook_vectors[index, 1]]))
 
         return [*self.clusters, *self.centroids]
 
